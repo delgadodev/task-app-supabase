@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [errorLogin, setErrorLogin] = useState(null);
 
   const { login } = useAuth();
 
@@ -26,7 +27,15 @@ const Login = () => {
         navigate("/", { replace: true });
       }
     } catch (error) {
-      console.log(error);
+      setErrorLogin(error.message);
+
+      setTimeout(
+        () => {
+          setErrorLogin(null);
+        },
+
+        3000
+      );
     }
 
     setLoading(false);
@@ -127,8 +136,15 @@ const Login = () => {
               </div>
             </div>
 
+            {errorLogin && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+                <strong className="font-bold">Error!</strong>
+                <span className="block sm:inline"> {errorLogin}</span>
+              </div>
+            )}
+
             <button
-            disabled={loading}
+              disabled={loading}
               type="submit"
               className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 transition-colors duration-300 "
             >
@@ -137,12 +153,12 @@ const Login = () => {
 
             <p className="text-center text-sm text-gray-500 ">
               No tienes una cuenta?{" "}
-              <a
+              <Link
                 className=" transition-colors duration-300 underline font-semibold hover:text-indigo-600"
-                href=""
+                to={"/signup"}
               >
                 Registrate
-              </a>
+              </Link>
             </p>
           </form>
         </div>

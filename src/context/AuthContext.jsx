@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import {supabase} from "../libs/utils/supabaseClient"
+import { supabase } from "../libs/utils/supabaseClient";
 
 const AuthContext = createContext({});
 
@@ -9,6 +9,8 @@ const login = (email, password) =>
   supabase.auth.signInWithPassword({ email, password });
 
 const signOut = () => supabase.auth.signOut();
+
+const register = (email, password) => supabase.auth.signUp({ email, password });
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
@@ -47,6 +49,7 @@ const AuthProvider = ({ children }) => {
         user,
         login,
         signOut,
+        register,
       }}
     >
       {!loading && children}

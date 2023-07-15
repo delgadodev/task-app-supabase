@@ -69,10 +69,10 @@ const TaskForm = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-slate-800">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-lg font-medium leading-6 text-gray-900 dark:text-white"
                   >
                     Nueva tarea
                   </Dialog.Title>
@@ -83,7 +83,7 @@ const TaskForm = () => {
                         name="tarea"
                         onChange={(e) => setTask(e.target.value)}
                         id="description"
-                        className="border border-gray-300 rounded-md w-full p-2"
+                        className="border border-gray-300 rounded-md w-full p-2 dark:text-black"
                       />
 
                       <div className="mt-4">

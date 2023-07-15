@@ -12,16 +12,16 @@ const Home = () => {
 
   return (
     <>
-      <div className="lg:max-w-5xl md:max-w-2xl max-w-xs mx-auto h-screen ">
+      <div className="lg:max-w-5xl md:max-w-2xl max-w-xs mx-auto h-screen">
         <HeaderBar />
 
         <div>
           {tasks.map((task) => (
             <Task
-              key={task.id}
+              key={task?.id}
               task={task}
-              updateTask={updateTask}
               deleteTask={deleteTask}
+              updateTask={updateTask}
             />
           ))}
         </div>

@@ -37,7 +37,11 @@ const TaskProvider = ({ children }) => {
     try {
       const result = await supabase
         .from("tasks")
-        .insert(newTask)
+        .insert({
+          description: newTask.description,
+          user_id: newTask.user_id,
+          completed: newTask.completed,
+        })
         .select()
         .single();
 
