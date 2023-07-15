@@ -27,9 +27,11 @@ const Profile = () => {
 
   console.log(profile);
 
-  return <div>
-    <h1>Hola, {profile.name}</h1>
-  </div>;
+  return (
+    <div>
+      <h1>Hola, {profile?.name}</h1>
+    </div>
+  );
 };
 
 export default Profile;
